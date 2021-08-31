@@ -1,0 +1,21 @@
+{
+  "name": "s02-http",
+  "version": "1.0.0",
+  "description": "Cours service d'échange de données - Automne 2021",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js --inspect"
+  },
+  "author": "Alexis Millette",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "dayjs": "^1.10.6",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
