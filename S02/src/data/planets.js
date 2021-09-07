@@ -16,7 +16,7 @@ export default [
     { id: 3000, name: 'Ucarvis' },
     { id: 4000, name: 'Inzinda' },
     { id: 5, name: 'Ninia' },
-    { id: 6, name: 'ualia' },
+    { id: 6, name: 'Xualia' },
     { id: 7, name: 'Becipra' },
     { id: 8, name: 'Stretelara' },
     { id: 50, name: 'Zides BGG' },

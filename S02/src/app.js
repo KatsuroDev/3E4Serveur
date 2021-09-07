@@ -1,7 +1,18 @@
 import express from "express";
 import dayjs from "dayjs";
 
+import methodMW from "./middlewares/method.js";
+import errorMW from "./middlewares/errors.js";
+
+
+import planetsRoutes from "./routes/planets.routes.js";
+
+
 const app = express();
+
+app.use(methodMW);
+app.use(planetsRoutes);
+
 
 app.get('/premiere', (req, res) => {
     res.status(200)
@@ -12,7 +23,7 @@ app.get('/premiere', (req, res) => {
 app.get("/date", (req, res) => {
     res.status(200);
     res.set("Content-Type", "text/plain");
-    res.send(`${dayjs()}`)
+    res.send(`${dayjs()}`);
 });
 
 //maths/somme
@@ -58,4 +69,6 @@ app.get("/maths/:operation", (req, res) => {
     res.send(`<strong>${result}</strong>`);
 });
 
+
+app.use(errorMW);
 export default app;
