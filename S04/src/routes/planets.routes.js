@@ -20,14 +20,31 @@ class PlanetsRoutes {
 
     async getAll(req, res, next) {
 
+        // FILTERS
         const filter = {};
-
         if(req.query.explorer){
             filter.discoveredBy = req.query.explorer;
         }
 
+        // TRANSFORMS
+        const transformOptions = {};
+        if(req.query.unit){
+            const unit = req.query.unit;
+            if(unit === 'c') {
+                transformOptions.unit = unit;
+            } else {
+                return next(httpError.BadRequest(`Unit parameter '${unit}' is invalid.`));
+            }
+        }
+
         try {
-            const planets = await planetsRepository.retrieveAll(filter);
+            let planets = await planetsRepository.retrieveAll(filter);
+
+            planets = planets.map(p => {
+                p = p.toObject({getters:true, virtuals:false});
+                p = planetsRepository.transform(p, transformOptions);
+                return p;
+            });
             res.status(200).json(planets);
 
         } catch(err) {
@@ -39,13 +56,27 @@ class PlanetsRoutes {
 
         const idPlanet = req.params.idPlanet;
 
+        const transformOptions = {};
+        if(req.query.unit) {
+            const unit = req.query.unit;
+            if(unit === 'c') {
+                transformOptions.unit = unit;
+            } else {
+                return next(httpError.BadRequest(`Unit parameter '${unit}' is invalid.`));
+            }
+        }
+
         try {
-                const planet = await planetsRepository.retrieveById(idPlanet);
+                let planet = await planetsRepository.retrieveById(idPlanet);
         
+                
                 if(!planet)
                     return next(httpError.NotFound(`Planet with id ${idPlanet} doesn't exist.`));
                 else
                 {
+                    planet = planet.toObject({getters:true, virtuals:false});
+                    planet = planetsRepository.transform(planet, transformOptions);
+
                     res.status(200).json(planet);
                 }
         }
@@ -54,30 +85,33 @@ class PlanetsRoutes {
         }
     }
 
-    postOne(req, res, next) {
+    async postOne(req, res, next) {
         const newPlanet = req.body;
-        const planet = PLANETS.find(p => p.id == newPlanet.id);
+        //TODO: Validation rapide jusqu'à la semaine +/- 8
+        try {
+            let planetAdded = await planetsRepository.create(newPlanet);
+            planetAdded = planetAdded.toObject({getters:true, virtuals:false});
+            planetAdded = planetsRepository.transform(planetAdded);
 
-        if(planet) {
-            return next(httpError.Conflict(`A planet with id ${newPlanet.id} already exists.`));
-        } else {
-            PLANETS.push(newPlanet);
+            res.status(201).json(planetAdded);
 
-            res.status(httpStatus.CREATED);
-            res.json(newPlanet);
+        } catch(err) {
+            return next(err);
         }
     }
 
-    deleteOne(req, res, next) {
+    async deleteOne(req, res, next) {
         const idPlanet = req.params.idPlanet;
         
-        const index = PLANETS.findIndex(p => p.id == idPlanet);
-
-        if(index === -1) {
-            return next(httpError.NotFound(`Planet with id ${idPlanet} doesn't exist.`));
-        } else {
-            PLANETS.splice(index, 1);
-            res.status(httpStatus.NO_CONTENT).end();
+        try {
+            const deleteResult = await planetsRepository.delete(idPlanet);
+            if(!deleteResult) {
+                return next(httpError.NotFound(`Planet with id ${idPlanet} doesn't exist.`));
+            } else {
+                res.status(204).end();
+            }
+        } catch(err) {
+            return next(err);
         }
     }
 
