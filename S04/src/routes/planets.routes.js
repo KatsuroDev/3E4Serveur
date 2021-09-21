@@ -3,6 +3,7 @@ import httpError from "http-errors";
 import httpStatus from "http-status";
 
 import PLANETS from "../data/planets.js";
+import planetsRepository from "../repositories/planets.repository.js";
 
 const router = express.Router();
 
@@ -17,23 +18,39 @@ class PlanetsRoutes {
         router.put("/:idPlanet", this.putOne);
     }
 
-    getAll(req, res, next) {
-        res.status(200);
-        res.set("Content-Type", "application/json");
+    async getAll(req, res, next) {
 
-        res.send(PLANETS);
+        const filter = {};
+
+        if(req.query.explorer){
+            filter.discoveredBy = req.query.explorer;
+        }
+
+        try {
+            const planets = await planetsRepository.retrieveAll(filter);
+            res.status(200).json(planets);
+
+        } catch(err) {
+           return next(err); 
+        }
     }
 
-    getOne(req, res, next) {
+    async getOne(req, res, next) {
 
         const idPlanet = req.params.idPlanet;
-        const planet = PLANETS.find(p => p.id == idPlanet);
 
-        if(!planet)
-            return next(httpError.NotFound(`Planet with id ${idPlanet} doesn't exist.`));
-        else
-        {
-            res.status(200).json(planet);
+        try {
+                const planet = await planetsRepository.retrieveById(idPlanet);
+        
+                if(!planet)
+                    return next(httpError.NotFound(`Planet with id ${idPlanet} doesn't exist.`));
+                else
+                {
+                    res.status(200).json(planet);
+                }
+        }
+        catch(err) {
+            return next(err);
         }
     }
 

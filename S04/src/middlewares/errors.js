@@ -4,7 +4,7 @@ import httpErrors from 'http-errors';
 export default (err, req, res, next) => {
 
     const error = {
-        //developerMessage: err.stack,
+        developerMessage: err.stack,
         userMessage: err.message,
     }
 
@@ -44,6 +44,6 @@ export default (err, req, res, next) => {
     error.moreInfo = `http://documentation/errors/${error.status}`;
 
     //TODO: if en developpement et log
-   // console.log(error.developerMessage);
+    console.log(error.developerMessage);
     res.status(error.status).json(error);
 }
