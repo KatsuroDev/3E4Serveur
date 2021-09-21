@@ -1,0 +1,232 @@
+[
+    {
+        "location": {
+            "station": "Sounds From Earth",
+            "coord": {
+                "lon": 69,
+                "lat": 420
+            }
+        },
+        "temperature": 666,
+        "pressure": 1,
+        "humidity": 1.0,
+        "feelslike": 0,
+        "uvIndex": 3.1415,
+        "wind": {
+            "speed": 100000,
+            "degree": 0 
+        },
+        "clouds": {
+            "cloudscover": 1.0
+        },
+        "observationDate": "2021-09-12T16:21:00.938281Z",
+        "hexMatrix": ["0xBB", "0xCC", "0xF1", "0xF0", "0xD4"]
+    },
+    {
+        "location": {
+            "station": "Gaudreau",
+            "coord": {
+                "lon": 45.711,
+                "lat": -74.083
+            }
+        },
+        "temperature": -365,
+        "pressure": 100000,
+        "humidity": 1.0,
+        "feelslike": 23520,
+        "uvIndex": 0,
+        "wind": {
+            "speed": 9000,
+            "degree": 180
+        },
+        "clouds": {
+            "cloudscover": 0.8
+        },
+        "observationDate": "2002-01-25T05:43:32.934829Z",
+        "hexMatrix": ["0x7A", "0x1C", "0x81", "0x48", "0x3B"]
+    },
+    {
+        "location": {
+            "station": "Gaudreau",
+            "coord": {
+                "lon": 503.12,
+                "lat": -84
+            }
+        },
+        "temperature": 9.6,
+        "pressure": 68,
+        "humidity": 0.44,
+        "feelslike": 7.2,
+        "uvIndex": 7,
+        "wind": {
+            "speed": 369,
+            "degree": 62
+        },
+        "clouds": {
+            "cloudscover": 0.3
+        },
+        "observationDate": "5638-06-01T11:47:07.267696Z",
+        "hexMatrix": ["0x47", "0x68", "0x37", "0x54", "0x05"]
+    },
+    {
+        "location": {
+            "station": "aaaa",
+            "coord": {
+                "lon": 0,
+                "lat": 0
+            }
+        },
+        "temperature": 0,
+        "pressure": 0,
+        "humidity": 0,
+        "feelslike": 0,
+        "uvIndex": 0,
+        "wind": {
+            "speed": 0,
+            "degree": 0
+        },
+        "clouds": {
+            "cloudscover": 0
+        },
+        "observationDate": "2000-12-31T00:00:00.000000Z",
+        "hexMatrix": ["0x00", "0xFF", "0x00", "0x00", "0x00"]
+    },
+    {
+        "location": {
+            "station": "aaaa",
+            "coord": {
+                "lon": 0,
+                "lat": 0
+            }
+        },
+        "temperature": 0,
+        "pressure": 0,
+        "humidity": 0,
+        "feelslike": 0,
+        "uvIndex": 0,
+        "wind": {
+            "speed": 0,
+            "degree": 0
+        },
+        "clouds": {
+            "cloudscover": 0
+        },
+        "observationDate": "2000-12-31T00:00:00.000000Z",
+        "hexMatrix": ["0x00", "0xFF", "0x00", "0x00", "0x00"]
+    },
+    {
+        "location": {
+            "station": "aaaa",
+            "coord": {
+                "lon": 0,
+                "lat": 0
+            }
+        },
+        "temperature": 0,
+        "pressure": 0,
+        "humidity": 0,
+        "feelslike": 0,
+        "uvIndex": 0,
+        "wind": {
+            "speed": 0,
+            "degree": 0
+        },
+        "clouds": {
+            "cloudscover": 0
+        },
+        "observationDate": "2000-12-31T00:00:00.000000Z",
+        "hexMatrix": ["0x00", "0xFF", "0x00", "0x00", "0x00"]
+    },
+    {
+        "location": {
+            "station": "aaaa",
+            "coord": {
+                "lon": 0,
+                "lat": 0
+            }
+        },
+        "temperature": 0,
+        "pressure": 0,
+        "humidity": 0,
+        "feelslike": 0,
+        "uvIndex": 0,
+        "wind": {
+            "speed": 0,
+            "degree": 0
+        },
+        "clouds": {
+            "cloudscover": 0
+        },
+        "observationDate": "2000-12-31T00:00:00.000000Z",
+        "hexMatrix": ["0x00", "0xFF", "0x00", "0x00", "0x00"]
+    },
+    {
+        "location": {
+            "station": "aaaa",
+            "coord": {
+                "lon": 0,
+                "lat": 0
+            }
+        },
+        "temperature": 0,
+        "pressure": 0,
+        "humidity": 0,
+        "feelslike": 0,
+        "uvIndex": 0,
+        "wind": {
+            "speed": 0,
+            "degree": 0
+        },
+        "clouds": {
+            "cloudscover": 0
+        },
+        "observationDate": "2000-12-31T00:00:00.000000Z",
+        "hexMatrix": ["0x00", "0xFF", "0x00", "0x00", "0x00"]
+    },
+    {
+        "location": {
+            "station": "aaaa",
+            "coord": {
+                "lon": 0,
+                "lat": 0
+            }
+        },
+        "temperature": 0,
+        "pressure": 0,
+        "humidity": 0,
+        "feelslike": 0,
+        "uvIndex": 0,
+        "wind": {
+            "speed": 0,
+            "degree": 0
+        },
+        "clouds": {
+            "cloudscover": 0
+        },
+        "observationDate": "2000-12-31T00:00:00.000000Z",
+        "hexMatrix": ["0x00", "0xFF", "0x00", "0x00", "0x00"]
+    },
+    {
+        "location": {
+            "station": "aaaa",
+            "coord": {
+                "lon": 0,
+                "lat": 0
+            }
+        },
+        "temperature": 0,
+        "pressure": 0,
+        "humidity": 0,
+        "feelslike": 0,
+        "uvIndex": 0,
+        "wind": {
+            "speed": 0,
+            "degree": 0
+        },
+        "clouds": {
+            "cloudscover": 0
+        },
+        "observationDate": "2000-12-31T00:00:00.000000Z",
+        "hexMatrix": ["0x00", "0xFF", "0x00", "0x00", "0x00"]
+    }
+]
