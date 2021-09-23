@@ -1,6 +1,7 @@
 import express from "express";
 import httpError from "http-errors";
 import httpStatus from "http-status";
+import planets from "../data/planets.js";
 
 import PLANETS from "../data/planets.js";
 import planetsRepository from "../repositories/planets.repository.js";
@@ -88,6 +89,10 @@ class PlanetsRoutes {
     async postOne(req, res, next) {
         const newPlanet = req.body;
         //TODO: Validation rapide jusqu'à la semaine +/- 8
+
+        if(Object.keys(newPlanet).length === 0)
+            return next(httpError.BadRequest("Planet can't be empty"));
+
         try {
             let planetAdded = await planetsRepository.create(newPlanet);
             planetAdded = planetAdded.toObject({getters:true, virtuals:false});
@@ -115,8 +120,23 @@ class PlanetsRoutes {
         }
     }
 
-    patchOne(req, res, next) {
-        return next(httpError.NotImplemented());
+    async patchOne(req, res, next) {
+        const planetModif = req.body;
+
+        try {
+            let planet = await planetsRepository.update(req.params.idPlanet, planetModif);
+
+            if(!planet) {
+                return next(httpError.NotFound(`Planet with id ${req.params.idPlanet} doesn't exist.`));
+            }
+
+            planet = planet.toObject({getters: true, virtuals:false});
+            planet = planetsRepository.transform(planet);
+
+            res.status(200).json(planet);
+        } catch(err) {
+            return next(err);
+        }
     }
 
     putOne(req, res, next) {
