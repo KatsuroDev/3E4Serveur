@@ -14,6 +14,10 @@ class ObservationsRoutes {
     }
 
     async getAll(req, res, next){
+        const filter = {
+            'location.station': req.params.stationName.toString()
+        };
+
         const transformOptions = {};
         if(req.query.unit) {
             const unit = req.query.unit;
@@ -23,6 +27,21 @@ class ObservationsRoutes {
                 return next(HttpError.BadRequest(`Unit parameter '${unit}' is invalid.`));
             }
         }
+
+        try {
+            let observations = await observationsRepository.retrieveAll(filter);
+            observations = observations.map(o => {
+                o = o.toObject({getter:true, virtuals:false});
+                o = observationsRepository.transform(o, transformOptions);
+                return o;
+            });
+
+            res.status(200).json(observations);
+        } catch(err) {
+            return next(err);
+        }
+
+
     }
 
     getOne(req, res, next){
