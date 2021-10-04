@@ -8,8 +8,8 @@ const FAHRENHEIT_MULTIPLIER = 1.8;
 const FAHRENHEIT_CONSTANT = 32;
 
 class ObservationsRepository {
-    retrieveById(id) {
-        return Observation.findById(id);
+    retrieveById(filter) {
+        return Observation.findOne(filter);
     }
     retrieveAll(filter) {
         return Observation.find(filter);

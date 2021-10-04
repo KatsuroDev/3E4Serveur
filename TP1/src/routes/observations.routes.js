@@ -44,8 +44,39 @@ class ObservationsRoutes {
 
     }
 
-    getOne(req, res, next){
+    async getOne(req, res, next){
 
+        const idObservation = req.params.idObservation;
+        const filter = {
+            'location.station': req.params.stationName.toString(),
+            _id: idObservation
+        };
+
+        const transformOptions = {};
+        if(req.query.unit) {
+            const unit = req.query.unit;
+            if(unit === 'm' || unit === 's' || unit === 'f'){
+                transformOptions.unit = unit;
+            } else {
+                return next(HttpError.BadRequest(`Unit parameter '${unit}' is invalid.`));
+            }
+        }
+
+        try {
+            let observation = await observationsRepository.retrieveById(filter);
+            
+            if(!observation)
+                return next(HttpError.NotFound(`Observation with id ${idObservation} doesn't exist.`));
+            else{
+                observation = observation.toObject({getters:true, virtuals:false});
+                observation = observationsRepository.transform(observation, transformOptions);
+
+                res.status(200).json(observation);
+            }
+            
+        } catch(err) {
+            return next(err);
+        }
     }
 
     post(req, res, next){
