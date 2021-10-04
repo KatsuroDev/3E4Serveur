@@ -17,7 +17,7 @@
             "degree": 0 
         },
         "clouds": {
-            "cloudscover": 1.0
+            "cloudcover": 1.0
         },
         "observationDate": "2021-09-12T16:21:00.938281Z",
         "hexMatrix": ["0xBB", "0xCC", "0xF1", "0xF0", "0xD4"]
@@ -40,7 +40,7 @@
             "degree": 180
         },
         "clouds": {
-            "cloudscover": 0.8
+            "cloudcover": 0.8
         },
         "observationDate": "2002-01-25T05:43:32.934829Z",
         "hexMatrix": ["0x7A", "0x1C", "0x81", "0x48", "0x3B"]
@@ -63,7 +63,7 @@
             "degree": 62
         },
         "clouds": {
-            "cloudscover": 0.3
+            "cloudcover": 0.3
         },
         "observationDate": "5638-06-01T11:47:07.267696Z",
         "hexMatrix": ["0x47", "0x68", "0x37", "0x54", "0x05"]
@@ -86,7 +86,7 @@
             "degree": 290
         },
         "clouds": {
-            "cloudscover": 0.1
+            "cloudcover": 0.1
         },
         "observationDate": "2032-08-28T02:49:20.000000Z",
         "hexMatrix": ["0xB9", "0xD8", "0x79", "0x7C", "0x02"]
@@ -109,7 +109,7 @@
             "degree": 56
         },
         "clouds": {
-            "cloudscover": 0.1
+            "cloudcover": 0.1
         },
         "observationDate": "1994-04-05T21:29:37.000000Z",
         "hexMatrix": ["0x83", "0xFF", "0x00", "0x30", "0x0A"]
@@ -132,7 +132,7 @@
             "degree": 89
         },
         "clouds": {
-            "cloudscover": 0.98
+            "cloudcover": 0.98
         },
         "observationDate": "2023-04-19T17:53:20.000000Z",
         "hexMatrix": ["0xDD", "0x8F", "0x49", "0x0A", "0x5C"]
@@ -155,7 +155,7 @@
             "degree": 0
         },
         "clouds": {
-            "cloudscover": 0
+            "cloudcover": 0
         },
         "observationDate": "2300-12-25T22:42:51.000000Z",
         "hexMatrix": ["0x54", "0x16", "0xF9", "0x48", "0xAD"]
@@ -178,7 +178,7 @@
             "degree": 324
         },
         "clouds": {
-            "cloudscover": 0.32
+            "cloudcover": 0.32
         },
         "observationDate": "2344-06-31T09:39:10.000000Z",
         "hexMatrix": ["0x30", "0xF3", "0x3C", "0x64", "0x35"]
@@ -201,7 +201,7 @@
             "degree": 13
         },
         "clouds": {
-            "cloudscover": 0.7
+            "cloudcover": 0.7
         },
         "observationDate": "1928-04-16T11:32:43.000000Z",
         "hexMatrix": ["0x9B", "0x9F", "0xFD", "0x79", "0xAC"]
@@ -224,7 +224,7 @@
             "degree": 352
         },
         "clouds": {
-            "cloudscover": 0.6
+            "cloudcover": 0.6
         },
         "observationDate": "2001-11-29T16:30:23.000000Z",
         "hexMatrix": ["0x88", "0xBB", "0xAC", "0x48", "0x32"]

@@ -79,8 +79,21 @@ class ObservationsRoutes {
         }
     }
 
-    post(req, res, next){
+    async post(req, res, next){
+        const newObservation = req.body;
 
+        if(Object.keys(newObservation).length === 0)
+            return next(HttpError.BadRequest("Observation can't be empty"));
+
+        try {
+            let observationAdded = await observationsRepository.create(newObservation);
+            observationAdded = observationAdded.toObject({getters:true, virtuals:false});
+            observationAdded = observationsRepository.transform(observationAdded);
+
+            res.status(201).json(observationAdded);
+        } catch(err) {
+            return next(err);
+        }
     }
 
     delete(req, res, next){

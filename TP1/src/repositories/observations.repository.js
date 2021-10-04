@@ -15,14 +15,20 @@ class ObservationsRepository {
         return Observation.find(filter);
     }
 
+    create(observation) {
+        return Observation.create(observation);
+    }
+
     transform(observation, transformOptions = {}) {
         if(transformOptions.unit) {
             switch(transformOptions.unit) {
                 case 's':
                     observation.temperature += ZERO_KELVIN;
+                    observation.feelslike += ZERO_KELVIN;
                     break;
                 case 'f':
                     observation.temperature = observation.temperature * FAHRENHEIT_MULTIPLIER + FAHRENHEIT_CONSTANT;
+                    observation.feelslike = observation.feelslike * FAHRENHEIT_MULTIPLIER + FAHRENHEIT_CONSTANT;
                     break;
             }
         }
