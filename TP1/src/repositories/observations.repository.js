@@ -35,20 +35,11 @@ class ObservationsRepository {
             }
         }
 
-    
         observation.hex = {};
 
-        observation.hex.alpha = 0;
-        observation.hex.beta = 0;
-        observation.hexMatrix.forEach(h => {
-            const hexToInt = parseInt(h, 16);
-            observation.hex.alpha += hexToInt;
-            if (observation.hex.beta === 0)
-                observation.hex.beta = hexToInt;
-            else
-                observation.hex.beta *= hexToInt;
-        });
-
+        observation.hex.alpha = parseInt(observation.hexMatrix.reduce((prev, curr) => prev += curr), 16);
+        observation.hex.beta = parseInt(observation.hexMatrix.reduce((prev, curr) => prev *= curr), 16);
+     
         if(observation.hex.alpha === 0)
             observation.hex.gamma = 0;
         else
