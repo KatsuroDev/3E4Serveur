@@ -8,6 +8,8 @@ const FAHRENHEIT_MULTIPLIER = 1.8;
 const FAHRENHEIT_CONSTANT = 32;
 
 class ObservationsRepository {
+    cardinalAngles = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+
     retrieveById(filter) {
         return Observation.findOne(filter);
     }
@@ -33,8 +35,30 @@ class ObservationsRepository {
             }
         }
 
-        observation.observationDate = dayjs(observation.observationDate).format('YYYY-MM-DD');
+    
+        observation.hex = {};
 
+        observation.hex.alpha = 0;
+        observation.hex.beta = 0;
+        observation.hexMatrix.forEach(h => {
+            const hexToInt = parseInt(h, 16);
+            observation.hex.alpha += hexToInt;
+            if (observation.hex.beta === 0)
+                observation.hex.beta = hexToInt;
+            else
+                observation.hex.beta *= hexToInt;
+        });
+
+        if(observation.hex.alpha === 0)
+            observation.hex.gamma = 0;
+        else
+            observation.hex.gamma = observation.hex.beta / observation.hex.alpha;
+
+        observation.hex.delta = observation.hex.beta % observation.hex.alpha;
+
+        observation.wind.direction = this.cardinalAngles[(Math.floor((observation.wind.degree - 22.5) / 45.0)+1) % 8];
+
+        delete observation.hexMatrix;
         delete observation.__v;
         return observation;
     }
