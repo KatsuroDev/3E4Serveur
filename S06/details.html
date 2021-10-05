@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js" integrity="sha512-lTLt+W7MrmDfKam+r3D2LURu0F47a3QaW5nF0c6Hl0JDZ57ruei+ovbg7BrZ+0bjVJ5YgzsAWE+RreERbpPE1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/details.js"></script>
+
+    <title>Details d'une planète</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Informations d'une planète</h1>
+        <div class="row">
+            <div class="col-9 row"> <!-- Info Planète -->
+                <div id="info-planet" class="col-4">
+                    <img id="imgIcon">
+                    <h2 id="lblName"></h2>
+                </div>
+                <div id="detail-planet" class="col-6">
+                    <div class="row">
+                        <label for="lblDiscoveredBy" class="col-4">Découverte par:</label>
+                        <label class="col-8" id="lblDiscoveredBy"></label>
+                    </div>
+                    <div class="row">
+                        <label for="lblDiscoveryDate" class="col-4">Découverte le:</label>
+                        <label class="col-8" id="lblDiscoveryDate"></label>
+                    </div>
+                    <div class="row">
+                        <label for="lblTemperature" class="col-4">Température:</label>
+                        <label class="col-8" id="lblTemperature"></label>
+                    </div>
+                    <div class="row">
+                        <label for="lblPosition" class="col-4">Position:</label>
+                        <label class="col-8" id="lblPosition"></label>
+                    </div>
+     
+                </div>
+            </div>
+            <div class="col-3"> <!-- Satellites -->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

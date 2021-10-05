@@ -10,7 +10,16 @@
     
 }
 
-.nom-planet {
+.card-title {
     font-family: 'Trispace', sans-serif;
     font-size:1.5em;
+}
+
+a:link, a:visited {
+    color: black;
+}
+
+#imgIcon {
+    width: 128px;
+    height: a
 }
