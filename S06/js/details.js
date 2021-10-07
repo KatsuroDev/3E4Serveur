@@ -13,9 +13,18 @@ const urlParams = {};
 
 $(document).ready(() => {
     getPlanet(urlParams.planet);
+    $('#btnAddPortal').click(() => {
+        addPortal();
+    });
 });
 
+function addPortal() {
+    const position = $('#txtPosition').val();
+    const affinity = $('cboAffinity').val();
 
+    console.log(position);
+    console.log(affinity);
+}
 
 async function getPlanet(url) {
     const response = await axios.get(url); 
@@ -38,4 +47,34 @@ function displayPlanet(planet) {
     $("#lblDiscoveryDate").html(planet.discoveryDate);
     $("#lblTemperature").html(planet.temperature);
     $("#lblPosition").html(`(${precision3(planet.position.x)}; ${precision3(planet.position.y)}; ${precision3(planet.position.z)})`);
+
+    // Satellites
+    let satellitesHtml = '';
+    planet.satellites.forEach(s => {
+        satellitesHtml += `<li>${s}</li>`;
+    });
+
+    if (satellitesHtml.length === 0) {
+        satellitesHtml += '<li>Aucun satellite</li>';
+    }
+    $("#satellites").html(satellitesHtml);
+
+    displayPortals(planet.portals);
+}
+
+
+function displayPortals(portals) {
+
+    let portalsHtml = '';
+    portals.forEach(p => {
+        portalsHtml += '<tr>';
+        
+        portalsHtml += `<td>${p.position}</td>`;
+        portalsHtml += `<td><img src="img/${p.affinity}.png" alt="${p.affinity}" title="${p.affinity}"></td>`;
+
+        portalsHtml += '</tr>';
+    });
+
+    $("#portals").append(portalsHtml);
+
 }

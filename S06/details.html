@@ -46,6 +46,54 @@
                 </div>
             </div>
             <div class="col-3"> <!-- Satellites -->
+                <div class="row">
+                    <h5>Satellites</h5>
+                </div>
+                <ul class="row" id="satellites">
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="col-12">Portals</h3>
+            <div class="col-8">
+                <table id="portals" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Position</th>
+                            <th scope="col">Affinity</th>
+                        </tr>
+                    </thead>
+
+
+                </table>
+            </div>
+            <div class="col-4">
+                <div class="row">
+
+                </div>
+                <div class="form-group">
+                    <label for="txtPosition">Position</label>
+                    <input type="text" patter="[A-Z]{1,2}[0-9]{3}" class="form-control" id="txtPosition">
+                </div>
+                <div class="form-group">
+                    <select class="form-select" id="cboAffinity">
+                        <option>air</option>
+                        <option>darkness</option>
+                        <option>earth</option>
+                        <option>energy</option>
+                        <option>fire</option>
+                        <option>life</option>
+                        <option>light</option>
+                        <option>logic</option>
+                        <option>music</option>
+                        <option>space</option>
+                        <option>toxic</option>
+                        <option>water</option>
+                    </select>
+                </div>
+                <button id="btnAddPortal" class="btn btn-danger">
+                    Ajouter le portal
+                </button>
             </div>
         </div>
     </div>

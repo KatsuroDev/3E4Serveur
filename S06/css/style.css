@@ -23,3 +23,8 @@ a:link, a:visited {
     width: 128px;
     height: a
 }
+
+thead {
+    background-color: black;
+    color: white;
+}
