@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "ba1c319b-9eec-49ad-aae5-f2593e734a12",
+		"name": "TP1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Observations",
+			"item": [
+				{
+					"name": "Errors",
+					"item": [
+						{
+							"name": "ERR[405] - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/observations/615b461a40547f568974f823",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"observations",
+										"615b461a40547f568974f823"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ERR[400] - RetrieveAll | Unit Transform",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/observations/SoundsFromEarth?unit=c",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"observations",
+										"SoundsFromEarth"
+									],
+									"query": [
+										{
+											"key": "unit",
+											"value": "c"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ERR[404] - Retrieve | Bad Station, Good ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/observations/AnyStation/615b461a40547f568974f823",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"observations",
+										"AnyStation",
+										"615b461a40547f568974f823"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ERR[404] - Retrieve | Good Station, Bad ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/observations/SoundsFromEarth/615540cd9dc691d76c959522",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"observations",
+										"SoundsFromEarth",
+										"615540cd9dc691d76c959522"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ERR[400] - Retrieve | Unit Transform",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/observations/SoundsFromEarth/615b461a40547f568974f823?unit=c",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"observations",
+										"SoundsFromEarth",
+										"615b461a40547f568974f823"
+									],
+									"query": [
+										{
+											"key": "unit",
+											"value": "c"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ERR[401] - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/observations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"observations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ERR[500] - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"location\": {\r\n        \"coord\": {\r\n            \"lon\": 0,\r\n            \"lat\": 0\r\n        },\r\n        \"station\": \"Test\"\r\n    },\r\n    \"wind\": {\r\n        \"speed\": 0,\r\n        \"degree\": 0\r\n    },\r\n    \"clouds\": {\r\n        \"cloudcover\": 0\r\n    },\r\n    \"temperature\": 0,\r\n    \"pressure\": 0,\r\n    \"humidity\": 0,\r\n    \"feelslike\": 0,\r\n    \"uvIndex\": 0,\r\n    \"observationdate\": \"2021-01-02\",\r\n    \"hexMatrix\": [\r\n        \"0x00\",\r\n        \"0xFF\",\r\n        \"0x00\",\r\n        \"0xFF\",\r\n        \"0x00\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/observations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"observations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ERR[422] - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"location\": {\r\n        \"coord\": {\r\n            \"lon\": 0,\r\n            \"lat\": 0\r\n        },\r\n        \"station\": \"Test\"\r\n    },\r\n    \"wind\": {\r\n        \"speed\": 0,\r\n        \"degree\": 0\r\n    },\r\n    \"clouds\": {\r\n        \"cloudcover\": 0\r\n    },\r\n    \"temperature\": 0,\r\n    \"pressure\": 0,\r\n    \"humidity\": 0,\r\n    \"feelslike\": 0,\r\n    \"uvIndex\": 0,\r\n    \"observationDate\": \"2021-00-02\",\r\n    \"hexMatrix\": [\r\n        \"0x00\",\r\n        \"0xFF\",\r\n        \"0x00\",\r\n        \"0xFF\",\r\n        \"0x00\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/observations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"observations"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "RetrieveAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/observations/SoundsFromEarth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"observations",
+								"SoundsFromEarth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RetrieveAll | Unit Transform",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/observations/SoundsFromEarth?unit=s",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"observations",
+								"SoundsFromEarth"
+							],
+							"query": [
+								{
+									"key": "unit",
+									"value": "s"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/observations/SoundsFromEarth/615b461a40547f568974f823",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"observations",
+								"SoundsFromEarth",
+								"615b461a40547f568974f823"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve | Unit Transform",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/observations/SoundsFromEarth/615b461a40547f568974f823?unit=f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"observations",
+								"SoundsFromEarth",
+								"615b461a40547f568974f823"
+							],
+							"query": [
+								{
+									"key": "unit",
+									"value": "f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"location\": {\r\n        \"coord\": {\r\n            \"lon\": 0,\r\n            \"lat\": 0\r\n        },\r\n        \"station\": \"Test\"\r\n    },\r\n    \"wind\": {\r\n        \"speed\": 0,\r\n        \"degree\": 335\r\n    },\r\n    \"clouds\": {\r\n        \"cloudcover\": 0\r\n    },\r\n    \"temperature\": 0,\r\n    \"pressure\": 0,\r\n    \"humidity\": 0,\r\n    \"feelslike\": 0,\r\n    \"uvIndex\": 0,\r\n    \"observationDate\": \"2021-02-02\",\r\n    \"hexMatrix\": [\r\n        \"0x00\",\r\n        \"0xFF\",\r\n        \"0x00\",\r\n        \"0xFF\",\r\n        \"0x00\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/observations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"observations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create | Default Date",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"location\": {\r\n        \"coord\": {\r\n            \"lon\": 0,\r\n            \"lat\": 0\r\n        },\r\n        \"station\": \"Test\"\r\n    },\r\n    \"wind\": {\r\n        \"speed\": 0,\r\n        \"degree\": 335\r\n    },\r\n    \"clouds\": {\r\n        \"cloudcover\": 0\r\n    },\r\n    \"temperature\": 0,\r\n    \"pressure\": 0,\r\n    \"humidity\": 0,\r\n    \"feelslike\": 0,\r\n    \"uvIndex\": 0,\r\n    \"hexMatrix\": [\r\n        \"0x00\",\r\n        \"0xFF\",\r\n        \"0x00\",\r\n        \"0xFF\",\r\n        \"0x00\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/observations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"observations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
