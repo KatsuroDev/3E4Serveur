@@ -47,6 +47,8 @@ class ObservationsRoutes {
     async getOne(req, res, next){
 
         const idObservation = req.params.idObservation;
+
+        // On utilise un filtre, pour éviter de recevoir un objet d'une autre station.
         const filter = {
             'location.station': req.params.stationName.toString(),
             _id: idObservation

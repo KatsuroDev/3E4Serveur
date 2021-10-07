@@ -35,6 +35,7 @@ class ObservationsRepository {
             }
         }
 
+        // Créer un nouvelle objet pour storer les résultats des calculs du hexMatrix.
         observation.hex = {};
 
         observation.hex.alpha = parseInt(observation.hexMatrix.reduce((prev, curr) => prev += curr), 16);
@@ -47,6 +48,8 @@ class ObservationsRepository {
 
         observation.hex.delta = observation.hex.beta % observation.hex.alpha;
 
+
+        // Assigner les lettres de la fleur des vents, dépendement du résultat de l'algorithme.
         observation.wind.direction = this.cardinalAngles[(Math.floor((observation.wind.degree - 22.5) / 45.0)+1) % 8];
 
         delete observation.hexMatrix;
