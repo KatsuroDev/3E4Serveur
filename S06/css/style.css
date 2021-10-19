@@ -16,7 +16,7 @@
 }
 
 a:link, a:visited {
-    color: black;
+    color: rgb(245, 243, 243);
 }
 
 #imgIcon {
@@ -25,6 +25,11 @@ a:link, a:visited {
 }
 
 thead {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
+}
+
+.elementImg {
+    height: 64px;
+    width: 64px;
 }
