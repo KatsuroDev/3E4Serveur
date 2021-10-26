@@ -22,27 +22,52 @@ httpServer.listen(PORT, () => {
 
 //Connexion des clients
 
-socketServer.on(IOEVENTS.CONNECTION, socket => {
+socketServer.on(IOEVENTS.CONNECTION, async (socket) => {
     console.log(socket.id);
+    await newUser(socket);
 
     socket.on(IOEVENTS.SEND_MESSAGE, message => {
         console.log(message);
         const messageToBroadcast = {
             socketId: socket.id,
             text: message.text,
-            timestamp: dayjs()
+            timestamp: dayjs(),
+            avatar: socket.data.identity.avatar,
+            name: socket.data.identity.name
         };
         socketServer.emit(IOEVENTS.NEW_MESSAGE, messageToBroadcast);
     });
+
+    socket.on(IOEVENTS.CHANGE_USERNAME, identity => {
+        socket.data.identity.name = identity.name;
+        sendUserIdentities();
+    });
+    
+    socket.on(IOEVENTS.DISCONNECT, reason => {
+        sendUserIdentities();
+    });
 });
+
 
 async function newUser(socket) {
 
+    const newUser = {
+        id: socket.id,
+        name: 'Anonyme',
+        avatar: randomAvatarImage()
+    };
+    socket.data.identity = newUser;
+    await sendUserIdentities();
 }
 
 
 async function sendUserIdentities() {
+
+    // Room concept
+    const sockets = await socketServer.fetchSockets();
+    const users = sockets.map(s => s.data.identity);
     
+    socketServer.emit(IOEVENTS.LIST_USERS, users);
 }
 
 function randomAvatarImage() {
