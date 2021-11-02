@@ -1,8 +1,15 @@
 import Exploration from '../models/exploration.model.js';
-import planetModel from '../models/planet.model.js';
 import planetRepository from './planet.repository.js';
 
 class ExplorationsRepository {
+    
+    retrieveAll(retrieveOptions)
+    {
+        const retrieveQuery = Exploration.find().skip(retrieveOptions.skip).limit(retrieveOptions.limit);
+        const countQuery = Exploration.estimatedDocumentCount();
+
+        return Promise.all([retrieveQuery, countQuery]);
+    }
     
     retrieveById(idExploration, retrieveOptions) {
         
@@ -15,10 +22,11 @@ class ExplorationsRepository {
         return retrieveQuery;
     }
 
+
     transform(exploration, transformOptions = {}) {
         if(transformOptions.embed && transformOptions.embed.planet)
         {
-            planetRepository.transform(exploration.planet);
+            exploration.planet = planetRepository.transform(exploration.planet, transformOptions);
         } else {
             exploration.planet = { href: `/planets/${exploration.planet}`};
         }

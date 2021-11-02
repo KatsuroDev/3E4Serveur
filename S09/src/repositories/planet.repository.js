@@ -35,6 +35,7 @@ class PlanetRepository {
                 planet.temperature = parseFloat(planet.temperature.toFixed(2));
             }
         }
+        planet.href = `/planets/${planet._id}`;
 
         planet.discoveryDate = dayjs(planet.discoveryDate).format('YYYY-MM-DD');
 
@@ -42,6 +43,7 @@ class PlanetRepository {
             `${planet.position.x.toString(16)}@${planet.position.y.toString(16)}#${planet.position.z.toString(16)}`;
 
         delete planet.__v;
+        delete planet._id;
 
 
         return planet;
