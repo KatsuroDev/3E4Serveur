@@ -109,7 +109,14 @@ class PlanetsRoutes {
         const idPlanet = req.params.idPlanet;
 
         //Validation des paramètres de la request
-        const transformOptions = {};
+        const retrieveOptions = { };
+        const transformOptions = { embed:{} };
+
+        if(req.query.embed && req.query.embed === 'explorations') {
+            retrieveOptions.explorations = true;
+            transformOptions.embed.explorations = true;
+        }
+
         if(req.query.unit) {
             const unit = req.query.unit;
             if(unit === 'c') {
@@ -120,11 +127,11 @@ class PlanetsRoutes {
         }
 
         try {
-            let planet = await planetRepository.retrieveById(idPlanet);
+            let planet = await planetRepository.retrieveById(idPlanet, retrieveOptions);
 
             if (planet) {
                 //1. J'ai une planète
-                planet = planet.toObject({getters:false, virtuals:false});
+                planet = planet.toObject({getters:false, virtuals:true});
                 planet = planetRepository.transform(planet, transformOptions);
                 res.status(200).json(planet);
             } else {
