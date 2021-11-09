@@ -3,16 +3,19 @@ import HttpError from 'http-errors';
 
 import planetRepository from '../repositories/planet.repository.js';
 
+import validator from '../middlewares/validator.js';
+import planetValidator from '../validators/planet.validator.js';
+
 const router = express.Router();
 
 class PlanetsRoutes {
     constructor() {
         router.get('/', this.getAll);
         router.get('/:idPlanet', this.getOne);
-        router.post('/', this.post);
+        router.post('/', planetValidator.complete(), validator, this.post);
         router.delete('/:idPlanet', this.delete);
-        router.patch('/:idPlanet', this.patch);
-        router.put('/:idPlanet', this.put);
+        router.patch('/:idPlanet', planetValidator.partial(), validator, this.patch);
+        router.put('/:idPlanet', planetValidator.complete(), validator, this.put);
     }
 
     async patch(req, res, next) {
@@ -24,10 +27,16 @@ class PlanetsRoutes {
                 return next(HttpError.NotFound(`La planète avec l'identifiant ${req.params.idPlanet} n'existe pas`));
             }
 
-            planet = planet.toObject({getters:false, virtuals:false});
-            planet = planetRepository.transform(planet);
+            
 
-            res.status(200).json(planet);
+            if(req.query._body === 'false')
+            {
+                res.status(200).end();
+            } else {
+                planet = planet.toObject({getters:false, virtuals:false});
+                planet = planetRepository.transform(planet);
+                res.status(200).json(planet);
+            }
 
         } catch(err) {
             return next(err);
@@ -63,7 +72,14 @@ class PlanetsRoutes {
             planetAdded = planetAdded.toObject({getters:false, virtuals:false});
             planetAdded = planetRepository.transform(planetAdded);
 
-            res.status(201).json(planetAdded);
+            res.header('Location', planetAdded.href)
+
+            if(req.query._body === 'false')
+            {
+                res.status(201).end();
+            } else {
+                res.status(201).json(planetAdded);
+            }
         } catch(err) {
             return next(err);
         }
